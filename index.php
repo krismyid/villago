@@ -1095,16 +1095,20 @@
 	                </div>
 	            </div>
 			</div>
+
 		</div>
 
+		<div><a name="registration-form"></a></div>
 		<div class="section section-full-screen section-signup" style="background-image: url('assets/img/city.jpg'); background-size: cover; background-position: top center; min-height: 700px;">
+
 			<div class="container">
+
 				<div class="row">
 					<div class="col-md-4 col-md-offset-4">
 						<div class="card card-signup">
 							<form class="form" method="" action="">
 								<div class="header header-primary text-center">
-									<a name="registration-form">Sign Up</a>
+
 									<h4>Sign Up</h4>
 									<div class="social-line">
 										<a href="#pablo" class="btn btn-simple btn-just-icon">
@@ -1288,7 +1292,7 @@
 			</div>
 			<div class="form-group">
 				<button class="btn btn-primary btn-lg btn-block">Sign In</button>
-				<span class="pull-right"><a data-dismiss="modal" href="#registration-form">register</a></span><span><a href="#">Need help?</a></span>
+				<span class="pull-right"><a href="#registration-form" onclick="$('#loginModal').modal('hide')">register</a></span>
 			</div>
 		</form>
 </div>
