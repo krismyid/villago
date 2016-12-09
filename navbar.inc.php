@@ -23,7 +23,7 @@
 	    <div class="collapse navbar-collapse" id="navigation-index">
 	    	<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="/member" target="_blank">
+					<a href="#" data-toggle="modal" data-target="#loginModal" target="_blank">
 						<i class="material-icons">play_arrow</i> Masuk
 					</a>
 				</li>
@@ -45,6 +45,8 @@
 
 	    	</ul>
 	    </div>
+
 	</div>
+
 </nav>
 <!-- End Navbar -->

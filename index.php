@@ -3,6 +3,7 @@
 <?php include_once "header.inc.php"; ?>
 
 <body class="index-page">
+
 <!--NAVBAR--->
 <?php include_once "navbar.inc.php"; ?>
 <div class="wrapper">
@@ -1103,6 +1104,7 @@
 						<div class="card card-signup">
 							<form class="form" method="" action="">
 								<div class="header header-primary text-center">
+									<a name="registration-form">Sign Up</a>
 									<h4>Sign Up</h4>
 									<div class="social-line">
 										<a href="#pablo" class="btn btn-simple btn-just-icon">
@@ -1268,6 +1270,36 @@
 	</footer>
 </div>
 
+<!--login modalsssss-->
+<div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h1 class="text-center">Login</h1>
+</div>
+<div class="modal-body">
+		<form class="form col-md-12 center-block">
+			<div class="form-group">
+				<input class="form-control input-lg" placeholder="Email" type="text">
+			</div>
+			<div class="form-group">
+				<input class="form-control input-lg" placeholder="Password" type="password">
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary btn-lg btn-block">Sign In</button>
+				<span class="pull-right"><a data-dismiss="modal" href="#registration-form">register</a></span><span><a href="#">Need help?</a></span>
+			</div>
+		</form>
+</div>
+<div class="modal-footer">
+		<div class="col-md-12">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+</div>
+</div>
+</div>
+</div>
+</div>
 <!-- Sart Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">

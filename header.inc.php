@@ -20,4 +20,8 @@
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link href="assets/css/demo.css" rel="stylesheet" />
 
+	<!--Scripts-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
