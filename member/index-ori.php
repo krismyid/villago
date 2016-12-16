@@ -3,20 +3,42 @@ session_start();
 include '../session.php';
 //var_dump($GLOBALS['userdetails']->id);
 //var_dump($_SESSION);
-require 'vendor/autoload.php';
-
-//new \Pixie\Connection('mysql', $config, 'QB');
-
-$query = QB::table('villas')->where('user_id', '=', $GLOBALS['userdetails']->id);
-$result = $query->get();
-
-
-
 ?>
 
 <!doctype html>
 <html lang="en">
-<?php include "header.inc.php"; ?>
+<head>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Paper Dashboard by Creative Tim</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+
+    <!--  Paper Dashboard core CSS    -->
+    <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+
+
+    <!--  Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/themify-icons.css" rel="stylesheet">
+
+</head>
 <body>
 	<!--login modal-->
 	<div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
@@ -71,7 +93,46 @@ $result = $query->get();
                     </a>
                 </li>
                 <li>
-
+                    <a href="user.html">
+                        <i class="ti-user"></i>
+                        <p>User Profile</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="table.html">
+                        <i class="ti-view-list-alt"></i>
+                        <p>Table List</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="typography.html">
+                        <i class="ti-text"></i>
+                        <p>Typography</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="icons.html">
+                        <i class="ti-pencil-alt2"></i>
+                        <p>Icons</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="maps.html">
+                        <i class="ti-map"></i>
+                        <p>Maps</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="notifications.html">
+                        <i class="ti-bell"></i>
+                        <p>Notifications</p>
+                    </a>
+                </li>
+				<li class="active-pro">
+                    <a href="upgrade.html">
+                        <i class="ti-export"></i>
+                        <p>Upgrade to PRO</p>
+                    </a>
                 </li>
             </ul>
     	</div>
@@ -89,15 +150,35 @@ $result = $query->get();
                     </button>
                     <a class="navbar-brand" href="#">Dashboard</a>
                 </div>
-								<div class="collapse navbar-collapse">
+                <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-
-												<li>
-						                            <a href="../handler.php?page=logout">
-														<i class="ti-user"></i>
-														<p>Logout</p>
-						                            </a>
-						                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="ti-panel"></i>
+								<p>Stats</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="ti-bell"></i>
+                                    <p class="notification">5</p>
+									<p>Notifications</p>
+									<b class="caret"></b>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                                <li><a href="#">Another notification</a></li>
+                              </ul>
+                        </li>
+						<li>
+                            <a href="../handler.php?page=logout">
+								<i class="ti-user"></i>
+								<p>Logout</p>
+                            </a>
+                        </li>
                     </ul>
 
                 </div>
@@ -105,61 +186,7 @@ $result = $query->get();
         </nav>
 
 
-				<div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">List Villa</h4>
-                                <p class="category">Berikut ini list villa yang dapat Anda kelola</p>
-                            </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <th>Nama Vila</th>
-                                    	<th>Deskripsi</th>
-                                    	<th>Latitude</th>
-                                    	<th>Longtitude</th>
-																			<th>Harga</th>
-																			<th>Action</th>
-                                    </thead>
-                                    <tbody>
-																			<?php
-																			foreach ($result as $row) {
-
-																							?>
-                                        <tr>
-                                        	<td><?php echo $row->name; ?></td>
-                                        	<td><?php echo $row->description; ?></td>
-                                        	<td><?php echo $row->latitude; ?></td>
-                                        	<td><?php echo $row->longtitude; ?></td>
-                                        	<td><?php echo $row->price; ?></td>
-																					<th><a href="edit.php?id=<?php echo $row->id; ?>"><i class="ti-pencil-alt" title="Edit"></i></a>
-																						  <a onclick="return confirm('Kamu yakin mau hapus <?php echo $row->name; ?>?\nAwas kangen! Data yang udah dihapus ga bisa kembali.');" href="../handler.php?page=villa&action=delete&id=<?php echo $row->id; ?>"><i class="ti-trash" title="Delete"></i></a>
-																					</th>
-
-																				</tr>
-																					<?php
-																				}
-																		?>
-
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
-												<div class="text-left">
-														<a href="add.php" class="btn btn-info btn-fill btn-wd">Tambah Villa</a>
-												</div>
-												<div class="clearfix"></div>
-                    </div>
-
-
-
-                </div>
-            </div>
-        </div>
+        
 
 
         <footer class="footer">
@@ -225,7 +252,7 @@ $result = $query->get();
 
         	$.notify({
             	icon: 'ti-gift',
-            	message: "Selamat datang."
+            	message: "Welcome to <b>Paper Dashboard</b> - a beautiful Bootstrap freebie for your next project."
 
             },{
                 type: 'success',
