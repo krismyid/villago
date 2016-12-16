@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
-<?php include_once "header.inc.php"; ?>
+<?php include_once "header.inc.php";
+session_start();
+?>
 
 <body class="index-page">
 
@@ -259,7 +261,7 @@
 				<div class="row">
 					<div class="col-md-4 col-md-offset-4">
 						<div class="card card-signup">
-							<form class="form" method="" action="">
+							<form class="form" method="post" action="handler.php?page=main&action=register" id="registration-form">
 								<div class="header header-primary text-center">
 									<h4>Sign Up</h4>
 									<div class="social-line">
@@ -281,21 +283,21 @@
 										<span class="input-group-addon">
 											<i class="material-icons">face</i>
 										</span>
-										<input type="text" class="form-control" placeholder="First Name...">
+										<input name="fullname" type="text" class="form-control" placeholder="Full Name..." required>
 									</div>
 
 									<div class="input-group">
 										<span class="input-group-addon">
 											<i class="material-icons">email</i>
 										</span>
-										<input type="text" class="form-control" placeholder="Email...">
+										<input name="email" type="text" class="form-control" placeholder="Email..." required>
 									</div>
 
 									<div class="input-group">
 										<span class="input-group-addon">
 											<i class="material-icons">lock_outline</i>
 										</span>
-										<input type="password" placeholder="Password..." class="form-control" />
+										<input name="password" type="password" placeholder="Password..." class="form-control" required>
 									</div>
 
 									<!-- If you want to add a checkbox to this form, uncomment this code
@@ -308,7 +310,9 @@
 									</div> -->
 								</div>
 								<div class="footer text-center">
-									<a href="#" class="btn btn-simple btn-primary btn-lg">Daftarkan!</a>
+									<input type="submit" class="btn btn-simple btn-primary btn-lg" value="Daftarkan!">
+
+
 								</div>
 							</form>
 						</div>
@@ -328,16 +332,17 @@
 		<h1 class="text-center">Login</h1>
 </div>
 <div class="modal-body">
-		<form class="form col-md-12 center-block">
+		<form class="form col-md-12 center-block" method="post" action="handler.php?page=main&action=login">
 			<div class="form-group">
-				<input class="form-control input-lg" placeholder="Email" type="text">
+				<input name="email" class="form-control input-lg" placeholder="Email" type="text" required>
 			</div>
 			<div class="form-group">
-				<input class="form-control input-lg" placeholder="Password" type="password">
+				<input name="password" class="form-control input-lg" placeholder="Password" type="password" required>
 			</div>
 			<div class="form-group">
-				<button class="btn btn-primary btn-lg btn-block">Sign In</button>
-				<span class="pull-right"><a href="#registration-form" aria-hidden="true" onclick="$('#loginModal').modal('hide')">register</a></span>
+				<input class="btn btn-primary btn-lg btn-block" type="submit" value="Masuk" />
+
+				<span class="pull-left"><a href="#registration-form" aria-hidden="true" onclick="$('#loginModal').modal('hide')">register</a></span>
 			</div>
 		</form>
 </div>
@@ -386,5 +391,8 @@
 			}
 
 		});
+		function submitForm(){
+    	$('#registration-form').submit();
+		}
 	</script>
 </html>

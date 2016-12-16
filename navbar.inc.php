@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!-- Navbar -->
 <nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll">
 	<div class="container">
@@ -23,6 +26,15 @@
 	    <div class="collapse navbar-collapse" id="navigation-index">
 	    	<ul class="nav navbar-nav navbar-right">
 				<li>
+					<?php
+					if (isset($_SESSION['userid'])) {
+						?>
+						<a href="#" data-toggle="modal" data-target="#loginModal" target="_blank">
+							<i class="material-icons">play_arrow</i> Logout
+						</a>
+						<?php
+					}
+					?>
 					<a href="#" data-toggle="modal" data-target="#loginModal" target="_blank">
 						<i class="material-icons">play_arrow</i> Masuk
 					</a>

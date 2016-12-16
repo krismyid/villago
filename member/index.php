@@ -1,3 +1,10 @@
+<?php
+session_start();
+include '../session.php';
+//var_dump($GLOBALS['userdetails']->id);
+//var_dump($_SESSION);
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -74,7 +81,7 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    Creative Tim
+                    <?php echo $GLOBALS['userdetails']->fullname; ?>
                 </a>
             </div>
 
@@ -167,9 +174,9 @@
                               </ul>
                         </li>
 						<li>
-                            <a href="#">
-								<i class="ti-settings"></i>
-								<p>Settings</p>
+                            <a href="../handler.php?page=logout">
+								<i class="ti-user"></i>
+								<p>Logout</p>
                             </a>
                         </li>
                     </ul>
