@@ -11,7 +11,7 @@ session_start();
 	        	<span class="icon-bar"></span>
 	        	<span class="icon-bar"></span>
 	    	</button>
-	    	<a href="http://www.creative-tim.com">
+	    	<a href="//villago.xyz">
 	        	<div class="logo-container">
 	                <div class="logo">
 	                    <img src="assets/img/logo.png" alt="Creative Tim Logo" rel="tooltip" title="<b>Villago</b> was Designed & Coded with care by the creative monkeys from <b>Mercubuana Jakarta</b>" data-placement="bottom" data-html="true">
