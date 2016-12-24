@@ -4,7 +4,21 @@
 session_start();
 
 require 'vendor/autoload.php';
-
+$config = array(
+            'driver'    => 'mysql', // Db driver
+            'host'      => 'localhost',
+            'database'  => 'villago',
+            'username'  => 'root',
+            'password'  => 'naiknaikkepuncakgunung',
+            'options'   => array( // PDO constructor options, optional
+                PDO::ATTR_TIMEOUT => 5,
+                PDO::ATTR_EMULATE_PREPARES => false,
+            ),
+        );
+new \Pixie\Connection('mysql', $config, 'QB');
+$query = QB::table('villas')->join('users', 'users.id', '=', 'villas.user_id')->where('villas.id', '=', $_GET['id']);
+$result = $query->get();
+var_dump($result);
 ?>
 
 <body class="index-page">
@@ -32,37 +46,24 @@ require 'vendor/autoload.php';
 		<div class="section section-basic">
 	    	<div class="container">
 	            <div class="title">
-	                <h2>Villa terdekat dengan kamu</h2>
+	                <h2>Detail VIlla</h2>
 	            </div>
-
-
-		        <div id="buttons">
-					<div class="title">
-						<h3>Deretan vila terdekat dari <br  /><small id="geoaddress"></small></h3>
-					</div>
-					<div class="row">
-						<input type="hidden" id="currentLatitude"/>
-						<input type="hidden" id="currentLongtitude"/>
-						<div class="content table-responsive table-full-width">
-								<table id="mainTable" class="table table-striped">
-										<thead>
-											<th>Nama Villa</th>
-											<th>Deskripsi</th>
-											<th>Harga</th>
-											<th>Alamat</th>
-											<th>Jarak</th>
-											<th>Aksi</th>
-										</thead>
-										<tbody>
-
-
-										</tbody>
-								</table>
-
-						</div>
-					</div>
-					  </div>
+								<h3><?php echo $result[0]->name;?></h3>
+								<h4>Oleh: <a href="mailto:<?php echo $result[0]->email; ?>"><?php echo $result[0]->fullname; ?></a></h4>
+								<p>
+									<?php echo $result[0]->description; ?>
+								</p>
+								<p>
+									<?php echo $result[0]->address; ?>
+								</p>
 	    	</div>
+				<div id="map"></div>
+				<div class="button">
+					<a href="../" class="btn btn-primary">Kembali</a>
+				</div>
+
+
+				</div>
 	    </div>
 		</div>
 
@@ -189,45 +190,9 @@ require 'vendor/autoload.php';
 
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="assets/js/material-kit.js" type="text/javascript"></script>
-
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoNqDy1CX5_DPZXlfSw-3gjMhPeVqi84c&callback=initMap">
+	</script>
 	<script type="text/javascript">
-
-    var latitude = document.getElementById("currentLatitude").value;
-		var longtitude = document.getElementById("currentLongtitude").value;
-		var service = 'http://villago.xyz/handler.php?action=GetNearbyVillasByGeolocation&page=main&latitude=-6.2382699&longtitude=106.97557260000008&radius=1000';
-		          $( document ).ready(function() {
-		            $('#mainTable').dataTable({
-		              "ajax": {
-		                "url": service,
-		                "cache": false
-		              },
-		              "bDestroy": true,
-		              "deferRender": true,
-		              "paging": false,
-		              "columns": [
-		                {"data": "name"},
-		                {"data": "description"},
-		                {"data": "price"},
-		                {"data": "address"},
-										{"data": "distance"},
-		                {
-		                  "data": "id",
-		                  "render": function (data, type, row, meta) {
-		                    if (type === 'display'){
-		                      return $('<a>')
-		                              .attr('href', 'detail.php?id=' + data)
-		                              .text('Detail')
-		                              .wrap('<div></div>')
-		                              .parent()
-		                              .html()
-		                    } else {
-		                      return data;
-		                    }
-		                  }
-		                }
-		              ]
-		            });
-		          });
 
 		$().ready(function(){
 			// the body of this function is in assets/material-kit.js
@@ -243,6 +208,18 @@ require 'vendor/autoload.php';
 		});
 		function submitForm(){
     	$('#registration-form').submit();
+		}
+
+		function initMap() {
+			var uluru = {lat: <?php echo $result[0]->latitude; ?>, lng: <?php echo $result[0]->longtitude; ?>};
+			var map = new google.maps.Map(document.getElementById('map'), {
+			 zoom: 15,
+			 center: uluru
+			});
+			var marker = new google.maps.Marker({
+			 position: uluru,
+			 map: map
+			});
 		}
 	</script>
 </html>

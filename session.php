@@ -24,5 +24,5 @@ $query = QB::table('users')->where('email', '=', $_SESSION['useremail']);
 $row = $query->first();
 $GLOBALS['userdetails'] = $row;
 if(!isset($_SESSION['useremail'])){
-   header("location:index.php");
+   header('Location: http://villago.xyz');
 }

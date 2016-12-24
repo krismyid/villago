@@ -16,6 +16,7 @@
 	<!-- CSS Files -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/material-kit.css" rel="stylesheet"/>
+		<link href="assets/css/jquery.dataTables.min.css" rel="stylesheet"/>
 
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link href="assets/css/demo.css" rel="stylesheet" />
@@ -23,5 +24,64 @@
 	<!--Scripts-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDoNqDy1CX5_DPZXlfSw-3gjMhPeVqi84c&sensor=false"></script>
+	<script type="text/javascript">
+	geocoder = new google.maps.Geocoder();
+
+	  if (navigator.geolocation) {
+	    navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+	}
+	//Get the latitude and the longitude;
+	function successFunction(position) {
+	    var lat = position.coords.latitude;
+	    var lng = position.coords.longitude;
+	    codeLatLng(lat, lng)
+	}
+
+
+
+	function errorFunction(){
+	    alert("Geocoder failed");
+	}
+
+	  function initialize() {
+	    geocoder = new google.maps.Geocoder();
+
+
+
+	  }
+
+	  function codeLatLng(lat, lng) {
+
+	    var latlng = new google.maps.LatLng(lat, lng);
+	    geocoder.geocode({'latLng': latlng}, function(results, status) {
+	      if (status == google.maps.GeocoderStatus.OK) {
+	      console.log(results)
+	        if (results[1]) {
+	         //formatted address
+					 document.getElementById("geoaddress").innerHTML = results[0].formatted_address;
+					 document.getElementById("currentLatitude").value = lat;
+					 document.getElementById("currentLongtitude").value = lng;
+
+	         //alert(results[0].formatted_address)
+
+	        } else {
+	          alert("No results found");
+	        }
+	      } else {
+	        alert("Geocoder failed due to: " + status);
+	      }
+	    });
+	  }
+
+	</script>
+	<style>
+	       #map {
+	        height: 400px;
+	        width: 100%;
+	       }
+	    </style>
+
 
 </head>

@@ -6,4 +6,26 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Pixie\\AliasFacade' => $vendorDir . '/usmanhalalit/pixie/src/Pixie/AliasFacade.php',
+    'Pixie\\Connection' => $vendorDir . '/usmanhalalit/pixie/src/Pixie/Connection.php',
+    'Pixie\\ConnectionAdapters\\BaseAdapter' => $vendorDir . '/usmanhalalit/pixie/src/Pixie/ConnectionAdapters/BaseAdapter.php',
+    'Pixie\\ConnectionAdapters\\Mysql' => $vendorDir . '/usmanhalalit/pixie/src/Pixie/ConnectionAdapters/Mysql.php',
+    'Pixie\\ConnectionAdapters\\Pgsql' => $vendorDir . '/usmanhalalit/pixie/src/Pixie/ConnectionAdapters/Pgsql.php',
+    'Pixie\\ConnectionAdapters\\Sqlite' => $vendorDir . '/usmanhalalit/pixie/src/Pixie/ConnectionAdapters/Sqlite.php',
+    'Pixie\\EventHandler' => $vendorDir . '/usmanhalalit/pixie/src/Pixie/EventHandler.php',
+    'Pixie\\Exception' => $vendorDir . '/usmanhalalit/pixie/src/Pixie/Exception.php',
+    'Pixie\\QueryBuilder\\Adapters\\BaseAdapter' => $vendorDir . '/usmanhalalit/pixie/src/Pixie/QueryBuilder/Adapters/BaseAdapter.php',
+    'Pixie\\QueryBuilder\\Adapters\\Mysql' => $vendorDir . '/usmanhalalit/pixie/src/Pixie/QueryBuilder/Adapters/Mysql.php',
+    'Pixie\\QueryBuilder\\Adapters\\Pgsql' => $vendorDir . '/usmanhalalit/pixie/src/Pixie/QueryBuilder/Adapters/Pgsql.php',
+    'Pixie\\QueryBuilder\\Adapters\\Sqlite' => $vendorDir . '/usmanhalalit/pixie/src/Pixie/QueryBuilder/Adapters/Sqlite.php',
+    'Pixie\\QueryBuilder\\JoinBuilder' => $vendorDir . '/usmanhalalit/pixie/src/Pixie/QueryBuilder/JoinBuilder.php',
+    'Pixie\\QueryBuilder\\NestedCriteria' => $vendorDir . '/usmanhalalit/pixie/src/Pixie/QueryBuilder/NestedCriteria.php',
+    'Pixie\\QueryBuilder\\QueryBuilderHandler' => $vendorDir . '/usmanhalalit/pixie/src/Pixie/QueryBuilder/QueryBuilderHandler.php',
+    'Pixie\\QueryBuilder\\QueryObject' => $vendorDir . '/usmanhalalit/pixie/src/Pixie/QueryBuilder/QueryObject.php',
+    'Pixie\\QueryBuilder\\Raw' => $vendorDir . '/usmanhalalit/pixie/src/Pixie/QueryBuilder/Raw.php',
+    'Pixie\\QueryBuilder\\Transaction' => $vendorDir . '/usmanhalalit/pixie/src/Pixie/QueryBuilder/Transaction.php',
+    'Pixie\\QueryBuilder\\TransactionHaltException' => $vendorDir . '/usmanhalalit/pixie/src/Pixie/QueryBuilder/TransactionHaltException.php',
+    'Viocon\\AliasFacade' => $vendorDir . '/usmanhalalit/viocon/src/Viocon/AliasFacade.php',
+    'Viocon\\Container' => $vendorDir . '/usmanhalalit/viocon/src/Viocon/Container.php',
+    'Viocon\\VioconException' => $vendorDir . '/usmanhalalit/viocon/src/Viocon/VioconException.php',
 );

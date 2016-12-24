@@ -82,19 +82,19 @@ include "header.inc.php";
                             </div>
                             <div class="content">
                                 <form method="post" action="../handler.php?page=add&action=add">
-                                  <input type="hidden" name="userid" class="form-control border-input" placeholder="Villa yang dirindukan" value="<?php echo $GLOBALS['userdetails']->id;?>">
+                                  <input type="hidden" name="userid" class="form-control border-input" placeholder="Villa yang dirindukan" value="<?php echo $GLOBALS['userdetails']->id;?>" required>
                                     <div class="row">
 
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>Nama Villa</label>
-                                                <input type="text" name="villaname" class="form-control border-input" placeholder="Villa yang dirindukan" value="">
+                                                <input type="text" name="villaname" class="form-control border-input" placeholder="Villa yang dirindukan" value="" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Harga per malam</label>
-                                                <input type="number" name="price" class="form-control border-input" placeholder="Harga">
+                                                <input type="number" name="price" class="form-control border-input" placeholder="Harga" required>
                                             </div>
                                         </div>
                                     </div>
@@ -114,11 +114,11 @@ include "header.inc.php";
 																	          <div class="row">
 																	            <div class="six columns">
 																	              <label>Latitude</label>
-																	              <input name="latitude" type="text" class="gllpLatitude border-input" value="" readonly/>
+																	              <input name="latitude" type="text" class="gllpLatitude border-input" value="" readonly required/>
 																	            </div>
 																	            <div class="six columns">
 																	              <label>Longtitude</label>
-																	              <input name="longtitude" type="text" class="gllpLongitude u-full-width" value="" readonly/>
+																	              <input name="longtitude" type="text" class="gllpLongitude u-full-width" value="" readonly required/>
 																	            </div>
 
 																	          </div>
@@ -151,13 +151,13 @@ include "header.inc.php";
                                       <div class="col-md-12">
                                           <div class="form-group">
                                               <label>Alamat Lengkap</label>
-                                              <input type="text" name="address" class="form-control border-input" placeholder="Jalan-In Dulu AJa" value="">
+                                              <input type="text" name="address" class="form-control border-input" placeholder="Jalan-In Dulu AJa" value="" required>
                                           </div>
                                       </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Deskripsi</label>
-                                                <textarea name="description" rows="5" class="form-control border-input" placeholder="Here can be your description"></textarea>
+                                                <textarea name="description" rows="5" class="form-control border-input" placeholder="Here can be your description" required></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -177,34 +177,7 @@ include "header.inc.php";
         </div>
 
 
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-
-                        <li>
-                            <a href="http://www.creative-tim.com">
-                                Creative Tim
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://blog.creative-tim.com">
-                               Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.creative-tim.com/license">
-                                Licenses
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-				<div class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
-                </div>
-            </div>
-        </footer>
-
+        <?php include_once "footer.inc.php";?>
     </div>
 </div>
 

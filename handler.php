@@ -105,9 +105,56 @@ if ($_GET['page'] == 'main') {
     else {
       showDialogBox('Login gagal, daftar dulu yah.','index.php');
     }
-
   }
+  if ($_GET['action'] == 'GetNearbyVillasByGeolocation') {
+    $latitude = $_GET['latitude'];
+    $longtitude = $_GET['longtitude'];
+    $radius = $_GET['radius'];
 
+    $query = QB::query("SELECT id,name,description,price,address,( 6371 * acos( cos( radians($latitude) ) * cos( radians( latitude ) ) * cos( radians( longtitude ) - radians($longtitude) ) + sin( radians($latitude) ) * sin( radians( latitude ) ) ) ) AS distance FROM villas HAVING distance < $radius ORDER BY distance LIMIT 0 , 20;");
+    $result = $query->get();
+    $output = array(
+            'data' => $result
+        );
+    header('Content-Type: application/json');
+    echo json_encode($output);
+  }
+}
+if ($_GET['page'] == 'add') {
+  if ($_GET['action'] == 'add') {
+    $data = array(
+      'name' => $_POST['villaname'],
+      'description' => $_POST['description'],
+      'price' => $_POST['price'],
+      'latitude' => $_POST['latitude'],
+      'longtitude' => $_POST['longtitude'],
+      'address' => $_POST['address'],
+      'user_id' => $_POST['userid']
+    );
+    $insertId = QB::table('villas')->insert($data);
+    showDialogBox('Data kamu telah tersimpan.','member/index.php');
+  }
+}
+if ($_GET['page'] == 'edit') {
+  if ($_GET['action'] == 'update') {
+    $data = array(
+      'name' => $_POST['villaname'],
+      'description' => $_POST['description'],
+      'price' => $_POST['price'],
+      'latitude' => $_POST['latitude'],
+      'longtitude' => $_POST['longtitude'],
+      'address' => $_POST['address'],
+      'user_id' => $_POST['userid']
+    );
+    QB::table('villas')->where('id', $_POST['villaid'])->update($data);
+    showDialogBox('Data kamu telah tersimpan.','member/index.php');
+  }
+}
+if ($_GET['page'] == 'villa') {
+  if ($_GET['action'] == 'delete') {
+    QB::table('villas')->where('id', '=', $_GET['id'])->delete();
+    showDialogBox('Data kamu telah dihapus.','member/index.php');
+  }
 }
 if ($_GET['page'] == 'logout') {
   session_start();
