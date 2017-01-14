@@ -18,7 +18,7 @@ $config = array(
 new \Pixie\Connection('mysql', $config, 'QB');
 $query = QB::table('villas')->join('users', 'users.id', '=', 'villas.user_id')->where('villas.id', '=', $_GET['id']);
 $result = $query->get();
-var_dump($result);
+//var_dump($result);
 ?>
 
 <body class="index-page">

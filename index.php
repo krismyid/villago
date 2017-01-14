@@ -194,7 +194,7 @@ require 'vendor/autoload.php';
 
     var latitude = document.getElementById("currentLatitude").value;
 		var longtitude = document.getElementById("currentLongtitude").value;
-		var service = 'http://villago.xyz/handler.php?action=GetNearbyVillasByGeolocation&page=main&latitude=-6.2382699&longtitude=106.97557260000008&radius=1000';
+		var service = 'https://villago.xyz/handler.php?action=GetNearbyVillasByGeolocation&page=main&latitude=-6.2382699&longtitude=106.97557260000008&radius=1000';
 		          $( document ).ready(function() {
 		            $('#mainTable').dataTable({
 		              "ajax": {

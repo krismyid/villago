@@ -187,7 +187,7 @@ include "header.inc.php";
     <!--   Core JS Files   -->
 <script src="assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>
 <script src="assets/js/jquery-gmaps-latlon-picker.js"></script>
- <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDoNqDy1CX5_DPZXlfSw-3gjMhPeVqi84c&sensor=false"></script>
+ <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyDoNqDy1CX5_DPZXlfSw-3gjMhPeVqi84c&sensor=false"></script>
 
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
